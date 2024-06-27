@@ -1,0 +1,29 @@
+version: '3'
+services:
+  db-crud:
+    container_name: db-crud
+    image: postgres:15.2
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: java
+      POSTGRES_PASSWORD: java123
+      POSTGRES_DB: ms_crud
+    ports:
+      - "5431:5431"
+    expose:
+      - "5431"
+    command: -p 5431
+
+  db-orders:
+    container_name: db-orders
+    image: postgres:15.2
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: java
+      POSTGRES_PASSWORD: java123
+      POSTGRES_DB: ms_orders
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    command: -p 3000
