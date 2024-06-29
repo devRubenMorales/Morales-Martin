@@ -37,6 +37,7 @@ public class DefaultSecurityConfig {
                 .csrf(csrf -> csrf.disable()) // Deshabilitar CSRF usando el nuevo Customizer
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/authenticate").permitAll()
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger.yaml").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/**").permitAll() // Permitir GET requests sin autenticación
                         .requestMatchers(HttpMethod.POST, "/api/**").authenticated()// Requerir autenticación para POST
                         .requestMatchers(HttpMethod.PUT, "/api/**").authenticated() // Requerir autenticación para PUT
